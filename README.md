@@ -10,6 +10,7 @@ The site is intended to be published with GitHub Pages from the repository root.
 - `scripts/build_index_html.py`: reproducible page generator.
 - `audio/`: demo audio files referenced by the page.
 - `selection_manifest.csv`: speaker and utterance selection manifest.
+- `transcripts.csv`: Whisper-derived utterance transcripts shown on the demo page.
 
 ## GitHub Pages
 
