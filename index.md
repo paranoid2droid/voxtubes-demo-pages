@@ -6,16 +6,16 @@ The source utterances are derived from [VoxTube](https://www.isca-archive.org/in
 
 ## Methods
 
-| Method | Description |
-|---|---|
-| Auth | Authentic VoxTube |
-| OHNN-HiFiGAN | OHNN analysis-and-synthesis with HiFiGAN |
-| OHNN-BigVGAN-SC | OHNN + BigVGAN + speaker consistency |
-| SALT-k4 | SALT latent transformation with k=4 |
-| SALT-k8 | SALT latent transformation with k=8 |
-| DAIEN-NCFG(-1.0) | DAIEN-TTS negative speech CFG, gamma=-1.0 |
-| DAIEN-NCFG(-0.75) | DAIEN-TTS negative speech CFG, gamma=-0.75 |
-| DAIEN-NCFG(-0.5) | DAIEN-TTS negative speech CFG, gamma=-0.5 |
+| Method | Description | Reference |
+|---|---|---|
+| Auth | Authentic VoxTube speech | [VoxTube](https://doi.org/10.21437/Interspeech.2023-1083) |
+| OHNN-HiFiGAN | OHNN speaker anonymization with HiFi-GAN vocoder | [OHNN](https://doi.org/10.1109/TASLP.2023.3313429), [HiFi-GAN](https://proceedings.neurips.cc/paper/2020/hash/c5d736809766d46260d816d8dbc9eb44-Abstract.html) |
+| OHNN-BigVGAN-SC | OHNN speaker anonymization with BigVGAN vocoder and speaker-consistency training | [OHNN](https://doi.org/10.1109/TASLP.2023.3313429), [BigVGAN](https://openreview.net/forum?id=iTtGCMDEzS_) |
+| SALT-k4 | SALT speaker anonymization with four-speaker mixture; k=4 | [SALT](https://doi.org/10.1109/ASRU57964.2023.10389719) |
+| SALT-k8 | SALT speaker anonymization with eight-speaker mixture; k=8 | [SALT](https://doi.org/10.1109/ASRU57964.2023.10389719) |
+| DAIEN-NCFG(-1.0) | DAIEN-TTS with negative classifier-free guidance; gamma=-1.0 | [DAIEN-TTS](https://doi.org/10.1109/ICASSP55912.2026.11460953), [CFG](https://doi.org/10.48550/arXiv.2207.12598) |
+| DAIEN-NCFG(-0.75) | DAIEN-TTS with negative classifier-free guidance; gamma=-0.75 | [DAIEN-TTS](https://doi.org/10.1109/ICASSP55912.2026.11460953), [CFG](https://doi.org/10.48550/arXiv.2207.12598) |
+| DAIEN-NCFG(-0.5) | DAIEN-TTS with negative classifier-free guidance; gamma=-0.5 | [DAIEN-TTS](https://doi.org/10.1109/ICASSP55912.2026.11460953), [CFG](https://doi.org/10.48550/arXiv.2207.12598) |
 
 ## Examples
 

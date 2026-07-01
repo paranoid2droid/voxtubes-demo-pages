@@ -15,15 +15,54 @@ TRANSCRIPTS = ROOT / "transcripts.csv"
 OUT = ROOT / "index.html"
 OUT_MD = ROOT / "index.md"
 
-METHOD_DESCRIPTIONS = {
-    "Auth": "Authentic VoxTube",
-    "OHNN-HiFiGAN": "OHNN analysis-and-synthesis with HiFiGAN",
-    "OHNN-BigVGAN-SC": "OHNN + BigVGAN + speaker consistency",
-    "SALT-k4": "SALT latent transformation with k=4",
-    "SALT-k8": "SALT latent transformation with k=8",
-    "DAIEN-NCFG(-1.0)": "DAIEN-TTS negative speech CFG, gamma=-1.0",
-    "DAIEN-NCFG(-0.75)": "DAIEN-TTS negative speech CFG, gamma=-0.75",
-    "DAIEN-NCFG(-0.5)": "DAIEN-TTS negative speech CFG, gamma=-0.5",
+METHOD_INFO = {
+    "Auth": {
+        "description": "Authentic VoxTube speech",
+        "refs": [("VoxTube", "https://doi.org/10.21437/Interspeech.2023-1083")],
+    },
+    "OHNN-HiFiGAN": {
+        "description": "OHNN speaker anonymization with HiFi-GAN vocoder",
+        "refs": [
+            ("OHNN", "https://doi.org/10.1109/TASLP.2023.3313429"),
+            ("HiFi-GAN", "https://proceedings.neurips.cc/paper/2020/hash/c5d736809766d46260d816d8dbc9eb44-Abstract.html"),
+        ],
+    },
+    "OHNN-BigVGAN-SC": {
+        "description": "OHNN speaker anonymization with BigVGAN vocoder and speaker-consistency training",
+        "refs": [
+            ("OHNN", "https://doi.org/10.1109/TASLP.2023.3313429"),
+            ("BigVGAN", "https://openreview.net/forum?id=iTtGCMDEzS_"),
+        ],
+    },
+    "SALT-k4": {
+        "description": "SALT speaker anonymization with four-speaker mixture; k=4",
+        "refs": [("SALT", "https://doi.org/10.1109/ASRU57964.2023.10389719")],
+    },
+    "SALT-k8": {
+        "description": "SALT speaker anonymization with eight-speaker mixture; k=8",
+        "refs": [("SALT", "https://doi.org/10.1109/ASRU57964.2023.10389719")],
+    },
+    "DAIEN-NCFG(-1.0)": {
+        "description": "DAIEN-TTS with negative classifier-free guidance; gamma=-1.0",
+        "refs": [
+            ("DAIEN-TTS", "https://doi.org/10.1109/ICASSP55912.2026.11460953"),
+            ("CFG", "https://doi.org/10.48550/arXiv.2207.12598"),
+        ],
+    },
+    "DAIEN-NCFG(-0.75)": {
+        "description": "DAIEN-TTS with negative classifier-free guidance; gamma=-0.75",
+        "refs": [
+            ("DAIEN-TTS", "https://doi.org/10.1109/ICASSP55912.2026.11460953"),
+            ("CFG", "https://doi.org/10.48550/arXiv.2207.12598"),
+        ],
+    },
+    "DAIEN-NCFG(-0.5)": {
+        "description": "DAIEN-TTS with negative classifier-free guidance; gamma=-0.5",
+        "refs": [
+            ("DAIEN-TTS", "https://doi.org/10.1109/ICASSP55912.2026.11460953"),
+            ("CFG", "https://doi.org/10.48550/arXiv.2207.12598"),
+        ],
+    },
 }
 
 
@@ -37,6 +76,16 @@ def markdown_audio_tag(path: str) -> str:
     media_type = "audio/mpeg" if path.endswith(".mp3") else "audio/wav"
     src = escape(path, quote=True)
     return f'<audio controls><source src="{src}" type="{media_type}"></audio>'
+
+
+def markdown_refs(refs: list[tuple[str, str]]) -> str:
+    return ", ".join(f"[{label}]({url})" for label, url in refs)
+
+
+def html_refs(refs: list[tuple[str, str]]) -> str:
+    return ", ".join(
+        f'<a href="{escape(url, quote=True)}">{escape(label)}</a>' for label, url in refs
+    )
 
 
 def load_transcripts() -> dict[str, str]:
@@ -62,11 +111,14 @@ def build_markdown(
         "",
         "## Methods",
         "",
-        "| Method | Description |",
-        "|---|---|",
+        "| Method | Description | Reference |",
+        "|---|---|---|",
     ]
     for method in method_order:
-        parts.append(f"| {method} | {METHOD_DESCRIPTIONS[method]} |")
+        info = METHOD_INFO[method]
+        parts.append(
+            f"| {method} | {info['description']} | {markdown_refs(info['refs'])} |"
+        )
 
     parts.extend(["", "## Examples", ""])
 
@@ -161,15 +213,17 @@ def main() -> None:
         '<p class="notice">The source utterances are derived from <a href="https://www.isca-archive.org/interspeech_2023/yakovlev23_interspeech.html">VoxTube</a>, a speaker-recognition corpus collected from YouTube videos released under Creative Commons Attribution (CC BY) licenses. The examples here retain that source-license provenance and are intended to illustrate the paper&apos;s anonymization and synthesis conditions.</p>',
         "<h2>Methods</h2>",
         "<table>",
-        "<thead><tr><th>Method</th><th>Description</th></tr></thead>",
+        "<thead><tr><th>Method</th><th>Description</th><th>Reference</th></tr></thead>",
         "<tbody>",
     ]
 
     for method in method_order:
+        info = METHOD_INFO[method]
         parts.append(
             "<tr>"
             f"<td class=\"method\">{escape(method)}</td>"
-            f"<td>{escape(METHOD_DESCRIPTIONS[method])}</td>"
+            f"<td>{escape(info['description'])}</td>"
+            f"<td>{html_refs(info['refs'])}</td>"
             "</tr>"
         )
 
