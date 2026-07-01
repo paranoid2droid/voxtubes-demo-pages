@@ -56,7 +56,7 @@ def build_markdown(
     parts = [
         "# VoxTubeS Listening Demo",
         "",
-        "This page provides a small listening set for VoxTubeS, with five randomly selected speakers and three utterances per speaker from the English development split. Each utterance is shown with its transcript, the authentic VoxTube clip, and aligned privacy-aware synthetic variants.",
+        "This page provides a small listening set for VoxTubeS, with five randomly selected speakers and three utterances per speaker from the English development split. Each utterance is shown with its Whisper large-v3-turbo transcript, the authentic VoxTube clip, and aligned privacy-aware synthetic variants.",
         "",
         "The source utterances are derived from [VoxTube](https://www.isca-archive.org/interspeech_2023/yakovlev23_interspeech.html), a speaker-recognition corpus collected from YouTube videos released under Creative Commons Attribution (CC BY) licenses. The examples here retain that source-license provenance and are intended to illustrate the paper's anonymization and synthesis conditions.",
         "",
@@ -100,15 +100,6 @@ def build_markdown(
                 cells.append(markdown_audio_tag(row["local_audio"]))
             parts.append("| " + " | ".join(cells) + " |")
         parts.append("")
-
-    parts.extend(
-        [
-            "## Release Note",
-            "",
-            "Before publication, manually review every example, preserve the required source attribution and license metadata, and remove any sample that is unsuitable for public release.",
-            "",
-        ]
-    )
 
     OUT_MD.write_text("\n".join(parts), encoding="utf-8")
 
@@ -166,7 +157,7 @@ def main() -> None:
         "<body>",
         "<main>",
         "<h1>VoxTubeS Listening Demo</h1>",
-        "<p>This page provides a small listening set for VoxTubeS, with five randomly selected speakers and three utterances per speaker from the English development split. Each utterance is shown with its transcript, the authentic VoxTube clip, and aligned privacy-aware synthetic variants.</p>",
+        "<p>This page provides a small listening set for VoxTubeS, with five randomly selected speakers and three utterances per speaker from the English development split. Each utterance is shown with its Whisper large-v3-turbo transcript, the authentic VoxTube clip, and aligned privacy-aware synthetic variants.</p>",
         '<p class="notice">The source utterances are derived from <a href="https://www.isca-archive.org/interspeech_2023/yakovlev23_interspeech.html">VoxTube</a>, a speaker-recognition corpus collected from YouTube videos released under Creative Commons Attribution (CC BY) licenses. The examples here retain that source-license provenance and are intended to illustrate the paper&apos;s anonymization and synthesis conditions.</p>',
         "<h2>Methods</h2>",
         "<table>",
@@ -228,16 +219,7 @@ def main() -> None:
             parts.append("<tr>" + "".join(cells) + "</tr>")
         parts.extend(["</tbody>", "</table>"])
 
-    parts.extend(
-        [
-            "<h2>Release Note</h2>",
-            "<p>Before publication, manually review every example, preserve the required source attribution and license metadata, and remove any sample that is unsuitable for public release.</p>",
-            "</main>",
-            "</body>",
-            "</html>",
-            "",
-        ]
-    )
+    parts.extend(["</main>", "</body>", "</html>", ""])
 
     OUT.write_text("\n".join(parts), encoding="utf-8")
 

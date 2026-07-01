@@ -1,6 +1,6 @@
 # VoxTubeS Listening Demo
 
-This page provides a small listening set for VoxTubeS, with five randomly selected speakers and three utterances per speaker from the English development split. Each utterance is shown with its transcript, the authentic VoxTube clip, and aligned privacy-aware synthetic variants.
+This page provides a small listening set for VoxTubeS, with five randomly selected speakers and three utterances per speaker from the English development split. Each utterance is shown with its Whisper large-v3-turbo transcript, the authentic VoxTube clip, and aligned privacy-aware synthetic variants.
 
 The source utterances are derived from [VoxTube](https://www.isca-archive.org/interspeech_2023/yakovlev23_interspeech.html), a speaker-recognition corpus collected from YouTube videos released under Creative Commons Attribution (CC BY) licenses. The examples here retain that source-license provenance and are intended to illustrate the paper's anonymization and synthesis conditions.
 
@@ -118,7 +118,3 @@ The source utterances are derived from [VoxTube](https://www.isca-archive.org/in
 | DAIEN-NCFG(-1.0) | <audio controls><source src="audio/05_UChyS0pZKG5Qa_8UqDMp8hhg/01_UChyS0pZKG5Qa_8UqDMp8hhg-3BT71qALFZU-seg000011/daien_ncfg_m1p0.wav" type="audio/wav"></audio> | <audio controls><source src="audio/05_UChyS0pZKG5Qa_8UqDMp8hhg/02_UChyS0pZKG5Qa_8UqDMp8hhg-Kli_JCb6KXY-seg000009/daien_ncfg_m1p0.wav" type="audio/wav"></audio> | <audio controls><source src="audio/05_UChyS0pZKG5Qa_8UqDMp8hhg/03_UChyS0pZKG5Qa_8UqDMp8hhg-S-1UsB6STo8-seg000005/daien_ncfg_m1p0.wav" type="audio/wav"></audio> |
 | DAIEN-NCFG(-0.75) | <audio controls><source src="audio/05_UChyS0pZKG5Qa_8UqDMp8hhg/01_UChyS0pZKG5Qa_8UqDMp8hhg-3BT71qALFZU-seg000011/daien_ncfg_m0p75.wav" type="audio/wav"></audio> | <audio controls><source src="audio/05_UChyS0pZKG5Qa_8UqDMp8hhg/02_UChyS0pZKG5Qa_8UqDMp8hhg-Kli_JCb6KXY-seg000009/daien_ncfg_m0p75.wav" type="audio/wav"></audio> | <audio controls><source src="audio/05_UChyS0pZKG5Qa_8UqDMp8hhg/03_UChyS0pZKG5Qa_8UqDMp8hhg-S-1UsB6STo8-seg000005/daien_ncfg_m0p75.wav" type="audio/wav"></audio> |
 | DAIEN-NCFG(-0.5) | <audio controls><source src="audio/05_UChyS0pZKG5Qa_8UqDMp8hhg/01_UChyS0pZKG5Qa_8UqDMp8hhg-3BT71qALFZU-seg000011/daien_ncfg_m0p5.wav" type="audio/wav"></audio> | <audio controls><source src="audio/05_UChyS0pZKG5Qa_8UqDMp8hhg/02_UChyS0pZKG5Qa_8UqDMp8hhg-Kli_JCb6KXY-seg000009/daien_ncfg_m0p5.wav" type="audio/wav"></audio> | <audio controls><source src="audio/05_UChyS0pZKG5Qa_8UqDMp8hhg/03_UChyS0pZKG5Qa_8UqDMp8hhg-S-1UsB6STo8-seg000005/daien_ncfg_m0p5.wav" type="audio/wav"></audio> |
-
-## Release Note
-
-Before publication, manually review every example, preserve the required source attribution and license metadata, and remove any sample that is unsuitable for public release.
