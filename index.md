@@ -1,13 +1,8 @@
 # VoxTubeS Listening Demo
 
-Random speaker-balanced examples for comparing authentic VoxTube speech with privacy-aware synthetic variants.
+This page provides a small listening set for VoxTubeS, with five randomly selected speakers and three utterances per speaker from the English development split. Each utterance is shown with its transcript, the authentic VoxTube clip, and aligned privacy-aware synthetic variants.
 
-> Public research demo. These short clips are selected examples for the VoxTubeS paper and should not be treated as a complete corpus release. Please do not attempt to identify speakers or redistribute the audio outside the context of reviewing or discussing the research demo.
-
-- Seed: `20260616`
-- Speakers: `5`
-- Utterances per speaker: `3`
-- Source split: English development manifests
+The source utterances are derived from [VoxTube](https://www.isca-archive.org/interspeech_2023/yakovlev23_interspeech.html), a speaker-recognition corpus collected from YouTube videos released under Creative Commons Attribution (CC BY) licenses. The examples here retain that source-license provenance and are intended to illustrate the paper's anonymization and synthesis conditions.
 
 ## Methods
 
