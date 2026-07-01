@@ -6,7 +6,8 @@ The site is intended to be published with GitHub Pages from the repository root.
 
 ## Files
 
-- `index.md`: GitHub Pages landing page.
+- `index.html`: GitHub Pages landing page.
+- `scripts/build_index_html.py`: reproducible page generator.
 - `audio/`: demo audio files referenced by the page.
 - `selection_manifest.csv`: speaker and utterance selection manifest.
 
@@ -24,4 +25,3 @@ Select:
 The page should then appear at:
 
 `https://<github-user>.github.io/<repo-name>/`
-
